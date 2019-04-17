@@ -1,28 +1,67 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components'
+import { Button, CssBaseline, Grid, withStyles } from '@material-ui/core'
+
+import ImgSrc from './assets/image1.jpg'
+import FormControl from './components/FormControl/FormControl';
+
+
+const Container = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid #adadad;
+  background: #e6e6e6;
+`
+
+const styles = theme => ({
+  'img_top': {
+    background: '#434343',
+    borderBottom: '1px solid #000000',
+    color: '#ffffff',
+    textAlign: 'center',
+    lineHeight: '40px'
+  },
+  'img_bottom': {
+    fontWeight: 700,
+    background: '#f0e921',
+    fontSize: '14px',
+    textAlign: 'center',
+    height: '50px',
+    lineHeight: '50px',
+    cursor: 'pointer',
+    borderBottom: '1px solid #c3c3c3',
+    color: '#a72929'
+  }
+})
 
 class App extends Component {
   render() {
+
+    const { classes } = this.props
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <CssBaseline />
+        <Container>
+          <Grid item xs={12} className={classes['img_top']}>
+            Beginning (시작)
+          </Grid>
+          <Grid item xs={12} style={{ height: 'auto', boxSizing: 'border-box', textAlign: 'center' }}>
+            <img width="100%" src={ImgSrc} alt="top_image.." style={{ border: 'none' }} />
+          </Grid>
+
+          <Grid item xs={12} className={classes['img_bottom']}>
+
+            동영상 보기 (Full HD)
+          </Grid>
+          <FormControl />
+        </Container>
+        <Button>
+          Hello
+        </Button>
+      </>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

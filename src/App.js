@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import { Button, CssBaseline, Grid, withStyles } from '@material-ui/core'
+import { CssBaseline, Grid, withStyles } from '@material-ui/core'
 
 import ImgSrc from './assets/image1.jpg'
 import FormControl from './components/FormControl/FormControl';
@@ -56,9 +56,6 @@ class App extends Component {
           </Grid>
           <FormControl />
         </Container>
-        <Button>
-          Hello
-        </Button>
       </>
     );
   }

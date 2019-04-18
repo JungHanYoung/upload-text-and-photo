@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Field, ErrorMessage } from 'formik'
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -46,13 +47,17 @@ const InfoForm = ({ handleChange, values, onChangeDate }) => {
             <li>
                 <span className="text">주문자 성함:</span>
                 <span>
-                    <input type="text" required name="name" onChange={handleChange} value={values.name} />
+                    <Field name="name" component="input" />
+                    <ErrorMessage name="name" />
+                    {/* <input type="text" name="name" onChange={handleChange} value={values.name} /> */}
                 </span>
             </li>
             <li>
                 <span className="text">이메일 주소:</span>
                 <span>
-                    <input type="email" required name="email" onChange={handleChange} value={values.email} />
+                    <Field name="email" component="input" />
+                    <ErrorMessage name="email" />
+                    {/* <input type="email" name="email" onChange={handleChange} value={values.email} /> */}
                 </span>
             </li>
             <li>
@@ -68,7 +73,9 @@ const InfoForm = ({ handleChange, values, onChangeDate }) => {
             <li>
                 <span className="text">휴대폰 번호:</span>
                 <span>
-                    <input type="text" required name="phone" onChange={handleChange} value={values.phone} />
+                    <Field name="phone" component="input" />
+                    <ErrorMessage name="phone" />
+                    {/* <input type="text" name="phone" onChange={handleChange} value={values.phone} /> */}
                 </span>
             </li>
         </Wrapper>

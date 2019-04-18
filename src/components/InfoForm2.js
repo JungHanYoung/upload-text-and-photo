@@ -1,4 +1,5 @@
 import React from 'react'
+import { Field } from 'formik'
 import styled from 'styled-components'
 
 
@@ -40,24 +41,35 @@ const InfoForm2 = ({ notes, letter, handleChange }) => {
                 <tr>
                     <Content>
                         <Title>참고사항을 적어주세요.</Title>
-                        <TextArea
+                        <Field 
+                            name="notes" 
+                            component={TextArea} 
+                            placeholder={`영상 제작시 참고해야 할 사항을 적어주세요.
+(샘플의 특성을 변경하시는 요청은 불가능합니다.)
+음원 변경과 같은 기본적인 참고사항만 적어주세요.`} />
+                        {/* <TextArea
                             name="notes"
                             placeholder={`영상 제작시 참고해야 할 사항을 적어주세요.
 (샘플의 특성을 변경하시는 요청은 불가능합니다.)
 음원 변경과 같은 기본적인 참고사항만 적어주세요.`}
                             onChange={handleChange}
                             value={notes}
-                        />
+                        /> */}
                     </Content>
                 </tr>
                 <tr>
                     <Content>
                         <Title>편지글을 작성해주세요.</Title>
-                        <TextArea
+                        <Field 
+                            name="letter"
+                            component={TextArea}
+                            defaultValue={letter}
+                        />
+                        {/* <TextArea
                             name="letter"
                             onChange={handleChange}
                             value={letter}
-                        />
+                        /> */}
                     </Content>
                 </tr>
             </tbody>

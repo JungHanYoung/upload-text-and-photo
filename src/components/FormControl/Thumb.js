@@ -4,8 +4,9 @@ import styled from 'styled-components'
 const DetailWrapper = styled.div`
     z-index: 20;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
     font-size: 13px;
     width: 100%;

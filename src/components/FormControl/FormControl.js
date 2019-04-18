@@ -8,6 +8,8 @@ import InfoForm from '../InfoForm'
 import InfoForm2 from '../InfoForm2'
 // import InfoForm3 from '../InfoForm3'
 import MyDropzone from './MyDropzone'
+import FAQ from './FAQ';
+import SubmitBox from './SubmitBox'
 
 const FormControl = () => {
     return (
@@ -67,7 +69,8 @@ const FormControl = () => {
                                     setFieldValue('images', values.images.filter((_, idx) => idx !== i))
                                 }}
                             />
-                            <button type="submit">업로드하기</button>
+                            <FAQ />
+                            <SubmitBox />
                         </form>
                     )
                 }

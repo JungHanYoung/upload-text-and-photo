@@ -23,9 +23,10 @@ const FormControl = () => {
                 letter,
                 images: []
             }}
-            onSubmit={(values) => {
+            onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
                     console.log(values)
+                    setSubmitting(false)
                 }, 3000);
             }}
             render={
@@ -35,7 +36,8 @@ const FormControl = () => {
                         values,
                         handleSubmit,
                         setFieldValue,
-                        handleChange
+                        handleChange,
+                        isSubmitting
                     } = props
                     // console.log(values.images)
                     return (
@@ -70,7 +72,9 @@ const FormControl = () => {
                                 }}
                             />
                             <FAQ />
-                            <SubmitBox />
+                            <SubmitBox
+                                disabled={isSubmitting}
+                            />
                         </form>
                     )
                 }

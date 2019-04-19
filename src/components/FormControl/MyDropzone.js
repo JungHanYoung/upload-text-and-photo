@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useDropzone } from 'react-dropzone'
 
+import Button from '@material-ui/core/Button'
 import Thumb from './Thumb'
 
 const UploadInputWrapper = styled.div`
@@ -34,7 +35,7 @@ const DzMessage = styled.div`
 `
 
 
-const MyDropzone = ({ images, onDrop, onRemove }) => {
+const MyDropzone = ({ images, onDrop, onRemove, onAllRemove }) => {
 
     const {
         getInputProps,
@@ -49,9 +50,15 @@ const MyDropzone = ({ images, onDrop, onRemove }) => {
                 {
                     images.length === 0 ?
                         <p>파일을 여기에 드래그 하세요!</p>
-                        : images.map((file, i) => <Thumb key={i} image={file} onRemove={() => onRemove(i)} />)
+                        : images.map((file, i) => 
+                            <Thumb 
+                                key={i} 
+                                image={file} 
+                                onRemove={() => onRemove(i)} 
+                            />)
                 }
             </DzMessage>
+            {images.length > 0 && <Button onClick={onAllRemove}>모두 제거</Button>}
         </UploadInputWrapper>
     )
 }

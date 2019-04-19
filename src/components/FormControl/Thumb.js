@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+import { withStyles } from '@material-ui/core/styles'
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton'
+
+const styles = theme => ({
+    margin: {
+        margin: theme.spacing.unit
+    }
+})
+
 const DetailWrapper = styled.div`
     z-index: 20;
     position: absolute;
@@ -17,15 +27,18 @@ const DetailWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: opacity .2 linear;
     & span {
-        background-color: rgba(255,255,255,.4);
-        padding: 0 0.4em;
-        border-radius: 3px;
-        font-size: 16px;
-        & + span {
-            margin-top: 1em;
-        }
+        background: rgba(255, 255, 255, 0.4);
     }
+`
+
+const ImageWrapper = styled.div`
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    z-index: 10;
 `
 
 const Wrapper = styled.div`
@@ -38,20 +51,17 @@ const Wrapper = styled.div`
     &:hover ${DetailWrapper} {
         opacity: 1;
     }
-`
-
-const ImageWrapper = styled.div`
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    display: block;
-    z-index: 10;
+    &:hover ${ImageWrapper} {
+        opacity: .3;
+    }
 `
 
 
 
 
-const Thumb = ({ image, onRemove }) => {
+
+
+const Thumb = ({ image, onRemove, classes }) => {
 
     const [loading, setLoading] = useState(false)
     const [thumb, setThumb] = useState(undefined)
@@ -84,17 +94,23 @@ const Thumb = ({ image, onRemove }) => {
             <DetailWrapper>
                 <span>{formatBytes(image.size)}</span>
                 <span>{image.name}</span>
+                <IconButton
+                    aria-label="Delete"
+                    className={classes.margin}
+                    onClick={e => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        onRemove()
+                    }}
+                >
+                    <DeleteIcon fontSize="small" />
+                </IconButton>
             </DetailWrapper>
-            <button onClick={(e) => {
-                e.preventDefault()
-                e.stopPropagation()
-                onRemove()
-            }}>remove</button>
         </Wrapper>
     )
 }
 
-export default Thumb
+export default withStyles(styles)(Thumb)
 
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
